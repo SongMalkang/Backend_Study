@@ -1,24 +1,35 @@
 import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement } from 'sequelize-typescript';
 
 interface CreateUserInput {
-  name: string;
-  email: string;
+  userName: string;
+  userEmail: string;
 }
 
 @Table({
   timestamps: true,
-  tableName: 'users'
+  tableName: 'user_tb'
 })
 export class User extends Model<User, CreateUserInput> {
+  @PrimaryKey
+  @AutoIncrement
   @Column({
-    type: DataType.STRING,
+    type: DataType.BIGINT,
     allowNull: false,
+    field: 'user_idx'
   })
-  name!: string;
+  userIdx!: number;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
+    field: 'user_name'
   })
-  email!: string;
+  userName!: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+    field: 'user_email'
+  })
+  userEmail!: string;
 }

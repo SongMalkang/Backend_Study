@@ -1,18 +1,15 @@
 // UserController.ts
 import { Request, Response } from 'express';
 import { userService } from '../services/UserService.ts';
+import { handleError } from '../utils/errorHandler.ts';
 
 export const createUser = async (req: Request, res: Response) => {
-  const { name, email } = req.body;
+  const { userName, userEmail } = req.body;
   try {
-    const user = await userService.createUser({ name, email });
+    const user = await userService.createUser({ userName, userEmail });
     res.status(201).json(user);
   } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({ error: error.message });
-    } else {
-      res.status(500).json({ error: 'Unknown error occurred' });
-    }
+    handleError(res, error);
   }
 };
 
@@ -21,10 +18,49 @@ export const getUsers = async (_req: Request, res: Response) => {
     const users = await userService.getUsers();
     res.status(200).json(users);
   } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({ error: error.message });
+    handleError(res, error);
+  }
+};
+
+export const getUserById = async (req: Request, res: Response) => {
+  const { userIdx } = req.params;
+  try {
+    const user = await userService.getUserById(Number(userIdx));
+    if (user) {
+      res.status(200).json(user);
     } else {
-      res.status(500).json({ error: 'Unknown error occurred' });
+      res.status(404).json({ message: 'User not found' });
     }
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
+export const updateUser = async (req: Request, res: Response) => {
+  const { userIdx } = req.params;
+  const updateData = req.body;
+  try {
+    const [affectedRows, updatedUsers] = await userService.updateUser(Number(userIdx), updateData);
+    if (affectedRows > 0) {
+      res.status(200).json(updatedUsers[0]);
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
+export const deleteUser = async (req: Request, res: Response) => {
+  const { userIdx } = req.params;
+  try {
+    const deletedRows = await userService.deleteUser(Number(userIdx));
+    if (deletedRows > 0) {
+      res.status(204).send();
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    handleError(res, error);
   }
 };

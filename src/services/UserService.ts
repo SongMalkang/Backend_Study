@@ -1,8 +1,13 @@
 import { User } from '../models/User.ts';
 
 interface CreateUserInput {
-  name: string;
-  email: string;
+  userName: string;
+  userEmail: string;
+}
+
+interface UpdateUserInput {
+  userName?: string;
+  userEmail?: string;
 }
 
 class UserService {
@@ -12,6 +17,23 @@ class UserService {
 
   async getUsers(): Promise<User[]> {
     return await User.findAll();
+  }
+
+  async getUserById(userIdx: number): Promise<User | null> {
+    return await User.findByPk(userIdx);
+  }
+
+  async updateUser(userIdx: number, input: UpdateUserInput): Promise<[number, User[]]> {
+    return await User.update(input, {
+      where: { userIdx },
+      returning: true,
+    });
+  }
+
+  async deleteUser(userIdx: number): Promise<number> {
+    return await User.destroy({
+      where: { userIdx }
+    });
   }
 }
 
