@@ -1,5 +1,11 @@
+openapi: 3.1.0
+info:
+  title: Backend Test Project
+  version: 1.0.0
+  description: Swagger For Other Dev 🤗
+
 tags:
-- name: users
+- name: User
   description: users API
 
 paths:
@@ -7,7 +13,7 @@ paths:
   /users:
     get:
       tags:
-      - users
+      - User
       summary: Find All Users
       responses:
         200:
@@ -18,7 +24,7 @@ paths:
 # [POST] users
     post:
       tags:
-      - users
+      - User
       summary: Add User
       parameters:
       - name: body
@@ -41,7 +47,7 @@ paths:
   /users/{id}:
     get:
       tags:
-      - users
+      - User
       summary: Find User By Id
       parameters:
       - name: id
@@ -60,7 +66,7 @@ paths:
 # [PUT] users/id
     put:
       tags:
-      - users
+      - User
       summary: Update User By Id
       parameters:
       - name: id
@@ -87,7 +93,7 @@ paths:
 # [DELETE] users/id
     delete:
       tags:
-      - users
+      - User
       summary: Delete User By Id
       parameters:
       - name: id
@@ -119,5 +125,5 @@ definitions:
         description: user Password
 
 schemes:
- - https
- - http
+  - https
+  - http

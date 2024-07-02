@@ -2,7 +2,12 @@ import { User } from '../models/User.ts';
 
 interface CreateUserInput {
   userName: string;
-  userEmail: string;
+  userId: string;
+  userPw: string;
+  userDept: string;
+  userRank: string;
+  userAuth: number;
+  userPhone: string;
 }
 
 interface UpdateUserInput {

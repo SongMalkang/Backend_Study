@@ -4,9 +4,10 @@ import { userService } from '../services/UserService.ts';
 import { handleError } from '../utils/errorHandler.ts';
 
 export const createUser = async (req: Request, res: Response) => {
-  const { userName, userEmail } = req.body;
+  const { userName, userId, userPw, userDept, userRank, userAuth, userPhone } = req.body;
+
   try {
-    const user = await userService.createUser({ userName, userEmail });
+    const user = await userService.createUser({ userName, userId, userPw, userDept, userRank, userAuth, userPhone });
     res.status(201).json(user);
   } catch (error) {
     handleError(res, error);
