@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@alt3/sequelize-to-json-schemas": "^0.3.56",
     "@types/cors": "^2.8.17",
     "@types/sequelize": "^4.28.20",
     "axios": "^1.7.2",
@@ -24,6 +25,7 @@
     "sequelize": "^6.37.3",
     "sequelize-typescript": "^2.1.6",
     "swagger": "^0.7.5",
+    "swagger-autogen": "^2.23.7",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "ts-node-dev": "^2.0.0",

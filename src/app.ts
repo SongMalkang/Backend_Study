@@ -6,7 +6,6 @@ import userRoutes from './routes/UserRoutes.ts';
 import { sequelize } from './config/database.ts';
 import { swaggerUi, swaggerSpec } from './config/swaggerConfig.ts';
 
-
 const app = express();
 const port = process.env.PORT ?? 4790;
 
