@@ -31,7 +31,7 @@ export class User extends Model<User, CreateUserInput> {
   @PrimaryKey
   @AutoIncrement
   @Column({
-    type: DataType.BIGINT,
+    type: DataType.BIGINT.UNSIGNED,
     allowNull: false,
     field: 'user_idx',
     comment: '기본키'
@@ -82,7 +82,7 @@ export class User extends Model<User, CreateUserInput> {
   userRank!: string;
   
   @Column({
-    type: DataType.TINYINT,
+    type: DataType.TINYINT.UNSIGNED,
     allowNull: false,
     field: 'user_auth',
     comment: '✨ 0: 개발자 / 1: 관리자 / 2: 사용자 / 3: 협력사 / 4: 가입 대기',
@@ -109,7 +109,7 @@ export class User extends Model<User, CreateUserInput> {
   lastLogin!: Date;
   
   @Column({
-    type: DataType.TINYINT,
+    type: DataType.BOOLEAN,
     allowNull: false,
     field: 'delFlag',
     comment: '✨ 0: 활성 / 1: 삭제된 사용자',
@@ -141,3 +141,5 @@ export class User extends Model<User, CreateUserInput> {
     }
   }
 }
+
+export default User;
