@@ -11,8 +11,13 @@ interface CreateUserInput {
 }
 
 interface UpdateUserInput {
-  userName?: string;
-  userEmail?: string;
+  userName: string;
+  userId: string;
+  userPw: string;
+  userDept: string;
+  userRank: string;
+  userAuth: number;
+  userPhone: string;
 }
 
 class UserService {

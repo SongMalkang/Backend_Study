@@ -4,10 +4,10 @@ import { createUser, getUsers, getUserById, updateUser, deleteUser } from '../co
 
 const router = Router();
 
-router.post('/users', createUser);
-router.get('/users', getUsers);
-router.get('/users/:userIdx', getUserById);
-router.patch('/users/:userIdx', updateUser);
-router.delete('/users/:userIdx', deleteUser);
+router.get('/list', getUsers);
+router.get('/find/:userIdx', getUserById);
+router.post('/create', createUser);
+router.patch('/update/:userIdx', updateUser);
+router.delete('/delete/:userIdx', deleteUser);
 
 export default router;

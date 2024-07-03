@@ -11,7 +11,8 @@ const app = express();
 const port = process.env.PORT ?? 4790;
 
 app.use(bodyParser.json());
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/document', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.use('/user', userRoutes);
 app.use('/menu', menuRoutes);
 

@@ -1,7 +1,12 @@
 import { Sequelize } from 'sequelize-typescript';
 
-import { User } from '../models/User.ts';
-import { Menu } from '../models/Menu.ts';
+import User from '../models/User.ts';
+import Menu from '../models/Menu.ts';
+import Criterion from '../models/Criterion.ts';
+import Area from '../models/Area.ts';
+import Log from '../models/Log.ts';
+import Module from '../models/Module.ts';
+import Setting from '../models/Setting.ts';
 
 const sequelize = new Sequelize({
   host: 'test5.hancomum.com',
@@ -10,7 +15,16 @@ const sequelize = new Sequelize({
   dialect: 'mysql',
   username: 'root',
   password: 'ubimicro',
-  models: [User, Menu],
+  models:
+    [
+      Area,
+      Criterion,
+      Log,
+      Menu,
+      Module,
+      Setting,
+      User
+    ],
 });
 
 export { sequelize };
