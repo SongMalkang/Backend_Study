@@ -15,16 +15,11 @@ const sequelize = new Sequelize({
   dialect: 'mysql',
   username: 'root',
   password: 'ubimicro',
-  models:
-    [
-      Area,
-      Criterion,
-      Log,
-      Menu,
-      Module,
-      Setting,
-      User
-    ],
+  models: [Area, Criterion, Log, Menu, Module, Setting, User],
+  timezone: '+09:00',
+  dialectOptions: {
+    timezone: 'Etc/GMT-9',
+  },
 });
 
-export { sequelize };
+export default sequelize;

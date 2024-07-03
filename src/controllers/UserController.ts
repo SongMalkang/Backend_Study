@@ -23,6 +23,20 @@ export const getUsers = async (_req: Request, res: Response) => {
   }
 };
 
+export const tryLogin = async (req: Request, res: Response) => {
+  const { userId, userPw } = req.query;
+  try {
+    const user = await userService.login(userId as string, userPw as string);
+    if (user) {
+      res.status(200).json(user);
+    } else {
+      res.status(401).json({ message: '아이디나 비밀번호를 확인해주세요' });
+    }
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
 export const getUserById = async (req: Request, res: Response) => {
   const { userIdx } = req.params;
   try {

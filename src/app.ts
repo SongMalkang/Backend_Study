@@ -4,7 +4,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import userRoutes from './routes/UserRoutes.ts';
 import menuRoutes from './routes/MenuRoutes.ts';
-import { sequelize } from './config/database.ts';
+import sequelize from './config/database.ts';
 import { swaggerUi, swaggerSpec } from './config/swaggerConfig.ts';
 
 const app = express();

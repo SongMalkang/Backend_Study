@@ -25,6 +25,18 @@ class UserService {
     return await User.create(input);
   }
 
+  async login(userId: string, userPw: string): Promise<User | null> {
+    const user = await User.findOne({
+      where: { userId }
+    });
+
+    if (user && user.dataValues.userPw === userPw) {
+      return user.dataValues;
+    }
+
+    return null;
+  }
+
   async getUsers(): Promise<User[]> {
     return await User.findAll();
   }
