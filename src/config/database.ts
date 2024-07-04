@@ -18,7 +18,7 @@ const sequelize = new Sequelize({
   models: [Area, Criterion, Log, Menu, Module, Setting, User],
   timezone: '+09:00',
   dialectOptions: {
-    timezone: 'Etc/GMT-9',
+    timezone: '+09:00',
   },
 });
 
